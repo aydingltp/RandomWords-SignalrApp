@@ -26,6 +26,8 @@ namespace SignalRChat
         {
             services.AddRazorPages();
             services.AddSignalR();
+            services.AddHostedService<TimedHostedService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,8 +54,14 @@ namespace SignalRChat
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapHub<ChatHub>("/chatHub");
+                endpoints.MapHub<Hubclass>("/hubclass");
+                //var HubContext = GlobalHost.ConnectionManager.GetHubContext<Hubclass>("/hubclass");
+
+                //Hubclass HubObj = new Hubclass();
+                //var RequiredId = HubObj.InvokeHubMethod();
+                //var RequiredId = HubObj.Context.ConnectionId
             });
+            //app.UseSignalR(routes => { routes.MapHub<Hubclass>("/hubclass"); });
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using SignalRChat.Hubs;
 
 namespace SignalRChat.Pages
 {
@@ -19,7 +20,9 @@ namespace SignalRChat.Pages
 
         public void OnGet()
         {
-
+            //var HubContext = GlobalHost.ConnectionManager.GetHubContext <Hubclass>("/hubclass");
+            //Hubclass HubObj = new Hubclass();
+            //var RequiredId = HubObj.InvokeHubMethod();
         }
     }
 }
