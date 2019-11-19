@@ -25,6 +25,13 @@ namespace SignalRChat
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+            builder =>
+            {
+                builder.AllowAnyMethod().AllowAnyHeader()
+                       .WithOrigins("https://localhost:44380/hubclass")
+                       .AllowCredentials();
+            }));
             services.AddSignalR();
             services.AddHostedService<TimedHostedService>();
 

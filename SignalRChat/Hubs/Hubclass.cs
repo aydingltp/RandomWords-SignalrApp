@@ -5,6 +5,10 @@ namespace SignalRChat.Hubs
 {
     public class Hubclass : Hub
     {
+        public Hubclass()
+        {
+            
+        }
         //public int Id { get; set; }
         //public int Saniye { get; set; }
         //public int Dakika { get; set; }
@@ -27,9 +31,12 @@ namespace SignalRChat.Hubs
             //Dakika = dakika;
             //Saniye = saniye;
         }
+
         //public string InvokeHubMethod()
         //{
         //    return "ConnectionId";  //ConnectionID will the Id as string that you want outside the hub
         //}
+
+
     }
 }

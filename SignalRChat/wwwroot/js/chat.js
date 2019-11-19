@@ -2,23 +2,33 @@
 
 var connection = new signalR.HubConnectionBuilder()
     .withUrl("/hubclass")
+    .withAutomaticReconnect()
     .build();
 
 connection.start().then(function () {
 
-   // document.getElementById("sendButton").disabled = false;
+    //document.getElementById("sendButton").disabled = false;
     //console.log(connection.connectionId);
-    //console.log(saniye);
-    document.getElementById("gun").replaceWith(gun);
-    document.getElementById("saat").replaceWith(saat);
-    document.getElementById("dakika").replaceWith(dakika);
-    document.getElementById("saniye").replaceWith(saniye);
-    console.log(connection.connectionId)
+    console.log(saniye);
+    //document.getElementById("gun").replaceWith(gun);
+    //document.getElementById("saat").replaceWith(saat);
+    //document.getElementById("dakika").replaceWith(dakika);
+    //document.getElementById("saniye").replaceWith(saniye);
+    console.log("connectionId : " + connection.connectionId)
 
 
 }).catch(function (err) {
     return console.error(err.toString());
 });
+
+connection.on("Zaman", function (gun, saat, dakika, saniye) {
+    console.log(saniye);
+    document.getElementById("gun").replaceWith(gun);
+    document.getElementById("saat").replaceWith(saat);
+    document.getElementById("dakika").replaceWith(dakika);
+    document.getElementById("saniye").replaceWith(saniye);
+});
+
 //var hub = connection.someHub;
 //connection.connectionId
 // After connection is started
@@ -26,13 +36,7 @@ connection.start().then(function () {
 //Disable send button until connection is established
 //document.getElementById("sendButton").disabled = true;
 
-connection.on("Zaman", function (gun, saat, dakika, saniye) {
-    console.log(saniye);
-    document.getElementById("gun").replaceWith(gun);
-    document.getElementById("saat").replaceWith(saat);
-    document.getElementById("dakika").replaceWith(dakika);
-    document.getElementById("saniye").replaceWith(saniye);  
-});
+
 
 
 
